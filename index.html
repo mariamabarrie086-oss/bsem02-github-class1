@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile - Limkokwing University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #e0e9f0 100%);
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: black;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        .hero-content {
+            z-index: 2;
+            animation: fadeIn 1.5s ease-in;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: -1px;
+        }
+        .hero h2 {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            color: #667eea;
+            letter-spacing: 1px;
+        }
+        .student-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+            max-width: 480px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        .student-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        .student-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        .student-card li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 500;
+            color: #555;
+            font-size: 1rem;
+        }
+        .student-card li:last-child {
+            border-bottom: none;
+        }
+        .student-card strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+        section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .bio {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.12);
+            margin: 3rem auto;
+            animation: slideUp 1s ease-out;
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(102, 126, 234, 0.08);
+            max-width: 750px;
+        }
+        .bio h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .bio h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        .bio p {
+            margin-bottom: 1.3rem;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+        .why-study {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f5f9 100%);
+            color: #2c3e50;
+            border-radius: 20px;
+            margin: 3rem auto;
+            animation: fadeIn 1s ease-in 0.5s both;
+            padding: 3rem 2.5rem;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-width: 750px;
+        }
+        .why-study h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .why-study h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        .why-study p {
+            margin-bottom: 1.3rem;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        .why-study p:last-child {
+            margin-bottom: 0;
+        }
+        .career-goals {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(250, 112, 154, 0.12);
+            margin: 3rem auto;
+            animation: slideUp 1s ease-out 0.7s both;
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(250, 112, 154, 0.08);
+            border-right: 5px solid #fa709a;
+            max-width: 750px;
+        }
+        .career-goals h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        .career-goals h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+            border-radius: 2px;
+        }
+        .career-goals p {
+            margin-bottom: 1.3rem;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        .career-goals p:last-child {
+            margin-bottom: 0;
+        }
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 4rem;
+        }
+        footer:hover {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            transform: translateY(-2px);
+        }
+        footer p {
+            letter-spacing: 0.5px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .hero {
+                height: 85vh;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero h2 {
+                font-size: 1rem;
+            }
+            .student-card {
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+            section {
+                padding: 2rem 1.5rem;
+                margin: 2rem auto !important;
+                max-width: 100% !important;
+            }
+            .bio, .why-study, .career-goals {
+                padding: 2rem 1.5rem !important;
+            }
+            .bio h3, .why-study h3, .career-goals h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Limkokwing University</h1>
+            <h2>Personal Profile</h2>
+            <div class="student-card">
+                <ul>
+                    <li><strong>Name:</strong> Mariama Barrie</li>
+                    <li><strong>Program:</strong> BSEM</li>
+                    <li><strong>Semester:</strong> 4</li>
+                    <li><strong>Student ID:</strong> 905005140</li>
+                    <li><strong>Year:</strong> 2</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="bio">
+        <h3>Short Bio</h3>
+        <p>I am a student at Limkokwing University studying Web Design under the BSEM program. I am passionate about creativity and technology, and I enjoy learning how to build websites and digital content. I am always eager to improve my skills and explore new ideas in the digital world.</p>
+        <p>I have a strong interest in user interface design, website development, and digital innovation. I enjoy working on projects that challenge my creativity and help me develop problem-solving skills. Through my studies, I am gaining knowledge in HTML, CSS, and modern web technologies, which are helping me grow into a skilled and confident web designer.</p>
+    </section>
+
+    <section class="why-study">
+        <h3>Why I Study Web Design</h3>
+        <p>I study web design because I love creativity and technology. Web design allows me to express ideas visually while also solving problems. I am interested in creating attractive and functional websites that people can use easily.</p>
+        <p>Additionally, web design provides opportunities to create digital solutions that can help businesses and individuals improve their online presence. I am motivated by the growing demand for digital platforms and I want to contribute by designing websites that are modern, responsive, and user-friendly.</p>
+    </section>
+
+    <section class="career-goals">
+        <h3>Career Goals</h3>
+        <p>My goal is to become a professional web designer and developer. I want to build modern and user-friendly websites and eventually work with top companies or start my own business. I also aim to keep learning new skills to grow in the tech industry.</p>
+        <p>In the future, I hope to specialize in advanced web technologies and user experience design. I also plan to work on real-world projects that will help businesses grow digitally. Furthermore, I aim to contribute to the technology industry by creating innovative solutions.</p>
+    </section>
+
+    <footer>
+        <p>&copy; Mariama Barrie, BSEM, Semester 4, 905005140, Year 2, 2026</p>
+    </footer>
+</body>
+</html>
